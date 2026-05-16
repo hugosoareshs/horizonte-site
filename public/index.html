@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Horizonte Tech — Gestão e tecnologia na mesma mão</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -47,7 +47,7 @@
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 26px;
     font-weight: 700;
     letter-spacing: -0.5px;
     color: var(--text-900);
@@ -69,9 +69,9 @@
   .hero {
     max-width: 1040px;
     margin: 0 auto;
-    padding: 100px 32px 96px;
+    padding: 64px 32px 56px;
   }
-  .hero-inner { max-width: 680px; }
+  .hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
   .hero h1 {
     font-size: 48px;
     font-weight: 800;
@@ -88,7 +88,9 @@
   .hero p {
     font-size: 18px;
     color: var(--text-500);
-    max-width: 520px;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
     line-height: 1.7;
     margin-bottom: 32px;
   }
@@ -137,13 +139,29 @@
     line-height: 1.75;
   }
 
-  /* === DIFERENCIAL (2 colunas) === */
+  /* === DIFERENCIAL (3 colunas) === */
   .diferencial-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 48px;
     margin-top: 56px;
   }
+  .diferencial-item .dif-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .diferencial-item .dif-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .diferencial-item:nth-child(1) .dif-icon { background: rgba(37,99,235,0.08); color: var(--blue); }
+  .diferencial-item:nth-child(2) .dif-icon { background: rgba(6,182,212,0.08); color: var(--cyan); }
+  .diferencial-item:nth-child(3) .dif-icon { background: rgba(37,99,235,0.08); color: var(--blue); }
   .diferencial-item h3 {
     font-size: 18px;
     font-weight: 700;
@@ -156,13 +174,6 @@
     color: var(--text-500);
     line-height: 1.7;
   }
-  .diferencial-item .line {
-    width: 32px;
-    height: 2px;
-    margin-bottom: 20px;
-  }
-  .diferencial-item:nth-child(1) .line { background: var(--blue); }
-  .diferencial-item:nth-child(2) .line { background: var(--cyan); }
 
   /* === NUMEROS === */
   .numeros-grid {
@@ -172,6 +183,7 @@
   }
   .numero-item { text-align: center; }
   .numero-valor {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 36px;
     font-weight: 800;
     letter-spacing: -1px;
@@ -197,12 +209,20 @@
     border-radius: 12px;
     padding: 32px 24px;
   }
-  .como-card .num {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--text-300);
-    letter-spacing: 1px;
+  .como-card .como-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: rgba(37,99,235,0.08);
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 16px;
+  }
+  .como-card .como-icon svg {
+    width: 22px;
+    height: 22px;
   }
   .como-card h3 {
     font-size: 16px;
@@ -232,19 +252,28 @@
     display: flex;
     align-items: flex-start;
     gap: 16px;
+    text-align: left;
     transition: border-color 200ms, box-shadow 200ms;
   }
   .produto-card:hover {
     border-color: var(--text-300);
     box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   }
-  .produto-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--cyan);
-    margin-top: 7px;
+  .produto-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(6,182,212,0.08);
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .produto-icon svg {
+    width: 20px;
+    height: 20px;
   }
   .produto-info h3 {
     font-size: 15px;
@@ -367,7 +396,7 @@
     .hero h1 { font-size: 32px; letter-spacing: -1.2px; }
     .hero p { font-size: 16px; }
     section { padding: 56px 24px; }
-    .diferencial-grid { grid-template-columns: 1fr; gap: 32px; }
+    .diferencial-grid { grid-template-columns: 1fr; gap: 28px; }
     .numeros-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
     .como-grid { grid-template-columns: 1fr; gap: 16px; }
     .produtos-grid { grid-template-columns: 1fr; }
@@ -409,21 +438,32 @@
 <div class="divider"><div class="divider-line"></div></div>
 
 <!-- QUEM SOMOS -->
-<section id="quem">
+<section id="quem" style="text-align: center;">
   <div class="section-label">Quem somos</div>
   <h2>Empresa de tecnologia com<br>25 anos de experiência em gestão.</h2>
-  <p class="desc">A Horizonte Tech desenvolve produtos digitais próprios. Cada solução nasce de vivência real com o problema — não de suposição.</p>
+  <p class="desc" style="margin-left: auto; margin-right: auto;">A Horizonte Tech desenvolve produtos digitais próprios. Cada solução nasce de vivência real com o problema — não de suposição.</p>
 
   <div class="diferencial-grid">
     <div class="diferencial-item">
-      <div class="line"></div>
+      <div class="dif-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M106,112a6,6,0,0,1,6-6h32a6,6,0,0,1,0,12H112A6,6,0,0,1,106,112ZM230,72V200a14,14,0,0,1-14,14H40a14,14,0,0,1-14-14V72A14,14,0,0,1,40,58H82V48a22,22,0,0,1,22-22h48a22,22,0,0,1,22,22V58h42A14,14,0,0,1,230,72ZM94,58h68V48a10,10,0,0,0-10-10H104A10,10,0,0,0,94,48ZM38,72v42.79A186,186,0,0,0,128,138a185.91,185.91,0,0,0,90-23.22V72a2,2,0,0,0-2-2H40A2,2,0,0,0,38,72ZM218,200V128.37A198.12,198.12,0,0,1,128,150a198.05,198.05,0,0,1-90-21.62V200a2,2,0,0,0,2,2H216A2,2,0,0,0,218,200Z"/></svg>
+      </div>
       <h3>Entendemos o negócio</h3>
       <p>Mais de duas décadas operando negócios em diferentes segmentos. Da indústria ao varejo, da logística aos serviços. Sabemos onde dói antes de escrever a primeira linha de código.</p>
     </div>
     <div class="diferencial-item">
-      <div class="line"></div>
+      <div class="dif-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M67.84,92.61,25.37,128l42.47,35.39a6,6,0,1,1-7.68,9.22l-48-40a6,6,0,0,1,0-9.22l48-40a6,6,0,0,1,7.68,9.22Zm176,30.78-48-40a6,6,0,1,0-7.68,9.22L230.63,128l-42.47,35.39a6,6,0,1,0,7.68,9.22l48-40a6,6,0,0,0,0-9.22Zm-81.79-89A6,6,0,0,0,154.36,38l-64,176A6,6,0,0,0,94,221.64a6.15,6.15,0,0,0,2,.36,6,6,0,0,0,5.64-3.95l64-176A6,6,0,0,0,162.05,34.36Z"/></svg>
+      </div>
       <h3>Entregamos a tecnologia</h3>
       <p>Produtos robustos, com tecnologia própria e compromisso de longo prazo. Não vendemos horas — construímos soluções que mantemos e evoluímos.</p>
+    </div>
+    <div class="diferencial-item">
+      <div class="dif-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M208,42H48A14,14,0,0,0,34,56v56c0,51.94,25.12,83.4,46.2,100.64,22.73,18.6,45.27,24.89,46.22,25.15a6,6,0,0,0,3.16,0c.95-.26,23.49-6.55,46.22-25.15C196.88,195.4,222,163.94,222,112V56A14,14,0,0,0,208,42Zm2,70c0,37.76-13.94,68.39-41.44,91.06A131.17,131.17,0,0,1,128,225.72a130.94,130.94,0,0,1-40.56-22.66C59.94,180.39,46,149.76,46,112V56a2,2,0,0,1,2-2H208a2,2,0,0,1,2,2ZM172.24,99.76a6,6,0,0,1,0,8.48l-56,56a6,6,0,0,1-8.48,0l-24-24a6,6,0,0,1,8.48-8.48L112,151.51l51.76-51.75A6,6,0,0,1,172.24,99.76Z"/></svg>
+      </div>
+      <h3>Protegemos seus dados</h3>
+      <p>Privacidade e segurança não são recursos opcionais — são fundação. Todas as nossas soluções seguem a LGPD e aplicam criptografia, controle de acesso e auditoria desde o primeiro dia.</p>
     </div>
   </div>
 </section>
@@ -446,7 +486,7 @@
       <div class="numero-label">tecnologia própria<br>e mantida internamente</div>
     </div>
     <div class="numero-item">
-      <div class="numero-valor">Brasil</div>
+      <div class="numero-valor" style="font-family: 'Inter', sans-serif;">Brasil</div>
       <div class="numero-label">empresa brasileira<br>com sede própria</div>
     </div>
   </div>
@@ -455,26 +495,32 @@
 <div class="divider"><div class="divider-line"></div></div>
 
 <!-- COMO ATUAMOS -->
-<section id="como">
+<section id="como" style="text-align: center;">
   <div class="section-label">Como atuamos</div>
   <h2>Produtos que nascem de<br>quem vive o problema.</h2>
-  <p class="desc">Não somos agência, consultoria ou fábrica de software. Criamos produtos próprios para resolver problemas que conhecemos de perto.</p>
+  <p class="desc" style="margin-left: auto; margin-right: auto;">Não somos agência, consultoria ou fábrica de software. Criamos produtos próprios para resolver problemas que conhecemos de perto.</p>
 
   <div class="como-grid">
     <div class="como-card">
-      <div class="num">01</div>
+      <div class="como-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm0,192a90,90,0,1,1,90-90A90.1,90.1,0,0,1,128,218ZM173.32,74.63l-64,32a6,6,0,0,0-2.69,2.69l-32,64A6,6,0,0,0,80,182a6.06,6.06,0,0,0,2.68-.63l64-32a6,6,0,0,0,2.69-2.69l32-64a6,6,0,0,0-8.05-8.05Zm-33.79,64.9L93.42,162.58l23-46.11,46.11-23Z"/></svg>
+      </div>
       <h3>Vivência real</h3>
       <p>Cada produto nasce de experiência direta com o desafio. Entendemos o fluxo, a dor e o contexto antes de projetar qualquer solução.</p>
     </div>
     <div class="como-card">
-      <div class="num">02</div>
+      <div class="como-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M246,128a54,54,0,0,1-92.18,38.18,3.07,3.07,0,0,1-.25-.26l-60-67.74a42,42,0,1,0,0,59.64l8.57-9.67a6,6,0,1,1,9,8l-8.69,9.81a3.07,3.07,0,0,1-.25.26,54,54,0,1,1,0-76.36,3.07,3.07,0,0,1,.25.26l60,67.74a42,42,0,1,0,0-59.64l-8.57,9.67a6,6,0,1,1-9-8l8.69-9.81a3.07,3.07,0,0,1,.25-.26A54,54,0,0,1,246,128Z"/></svg>
+      </div>
       <h3>Compromisso de longo prazo</h3>
       <p>Não entregamos e saímos. Mantemos, evoluímos e operamos nossos produtos junto com quem os usa no dia a dia.</p>
     </div>
     <div class="como-card">
-      <div class="num">03</div>
-      <h3>Pele no jogo</h3>
-      <p>Investimos nos nossos próprios produtos. O sucesso do cliente é o nosso sucesso — estamos do mesmo lado.</p>
+      <div class="como-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M152,98H104a6,6,0,0,0-6,6v48a6,6,0,0,0,6,6h48a6,6,0,0,0,6-6V104A6,6,0,0,0,152,98Zm-6,48H110V110h36Zm86,0H214V110h18a6,6,0,0,0,0-12H214V56a14,14,0,0,0-14-14H158V24a6,6,0,0,0-12,0V42H110V24a6,6,0,0,0-12,0V42H56A14,14,0,0,0,42,56V98H24a6,6,0,0,0,0,12H42v36H24a6,6,0,0,0,0,12H42v42a14,14,0,0,0,14,14H98v18a6,6,0,0,0,12,0V214h36v18a6,6,0,0,0,12,0V214h42a14,14,0,0,0,14-14V158h18a6,6,0,0,0,0-12Zm-30,54a2,2,0,0,1-2,2H56a2,2,0,0,1-2-2V56a2,2,0,0,1,2-2H200a2,2,0,0,1,2,2Z"/></svg>
+      </div>
+      <h3>Tecnologia própria</h3>
+      <p>Não dependemos de plataforma de terceiros. Cada produto é construído e mantido internamente, com controle total sobre evolução, segurança e disponibilidade.</p>
     </div>
   </div>
 </section>
@@ -482,35 +528,43 @@
 <div class="divider"><div class="divider-line"></div></div>
 
 <!-- PRODUTOS -->
-<section id="produtos">
+<section id="produtos" style="text-align: center;">
   <div class="section-label">Produtos</div>
   <h2>No ar agora.</h2>
-  <p class="desc">Soluções próprias, em produção, usadas todos os dias.</p>
+  <p class="desc" style="margin-left: auto; margin-right: auto;">Soluções próprias, em produção, usadas todos os dias.</p>
 
   <div class="produtos-grid">
     <div class="produto-card">
-      <div class="produto-dot"></div>
+      <div class="produto-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M216,66H56a10,10,0,0,1,0-20H192a6,6,0,0,0,0-12H56A22,22,0,0,0,34,56V184a22,22,0,0,0,22,22H216a14,14,0,0,0,14-14V80A14,14,0,0,0,216,66Zm2,126a2,2,0,0,1-2,2H56a10,10,0,0,1-10-10V75.59A21.84,21.84,0,0,0,56,78H216a2,2,0,0,1,2,2Zm-28-60a10,10,0,1,1-10-10A10,10,0,0,1,190,132Z"/></svg>
+      </div>
       <div class="produto-info">
         <h3>FamilyFin</h3>
         <p>Gestão financeira familiar inteligente. Controle de orçamento, metas e visão completa das finanças da família.</p>
       </div>
     </div>
     <div class="produto-card">
-      <div class="produto-dot"></div>
+      <div class="produto-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M128,90a38,38,0,1,0,38,38A38,38,0,0,0,128,90Zm0,64a26,26,0,1,1,26-26A26,26,0,0,1,128,154Zm78-26a77.74,77.74,0,0,1-19.86,52,6,6,0,0,1-8.94-8,65.93,65.93,0,0,0,0-88,6,6,0,1,1,8.94-8A77.74,77.74,0,0,1,206,128ZM67.18,102.31A65.93,65.93,0,0,0,78.8,172a6,6,0,0,1-.47,8.47,6,6,0,0,1-8.47-.47,77.93,77.93,0,0,1,0-104,6,6,0,1,1,8.94,8A66.21,66.21,0,0,0,67.18,102.31ZM246,128a117.71,117.71,0,0,1-33.71,82.58,6,6,0,0,1-8.58-8.4,105.88,105.88,0,0,0,0-148.36,6,6,0,0,1,8.58-8.4A117.71,117.71,0,0,1,246,128ZM52.29,202.18a6,6,0,0,1-8.58,8.4,117.92,117.92,0,0,1,0-165.16,6,6,0,1,1,8.58,8.4,105.88,105.88,0,0,0,0,148.36Z"/></svg>
+      </div>
       <div class="produto-info">
         <h3>Central de Monitoramento</h3>
         <p>Monitoramento IoT para espaços comerciais. Sensores, alertas e automação de climatização em tempo real.</p>
       </div>
     </div>
     <div class="produto-card">
-      <div class="produto-dot"></div>
+      <div class="produto-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M246,120a46.05,46.05,0,0,0-46-46H160.15c-2.58-.15-54.1-3.57-103.15-44.71A14,14,0,0,0,34,40V200a13.85,13.85,0,0,0,8.07,12.68A14.16,14.16,0,0,0,48,214a13.9,13.9,0,0,0,9-3.3c40-33.52,81.57-42,97-44.07v34a14,14,0,0,0,6.23,11.65l11,7.33a14,14,0,0,0,21.32-8.17l12.13-45.71A46.07,46.07,0,0,0,246,120ZM49.29,201.52A2,2,0,0,1,46,200V40a1.9,1.9,0,0,1,1.15-1.8A2.08,2.08,0,0,1,48,38a1.91,1.91,0,0,1,1.26.48c44,36.92,89,45.19,104.71,47v69C138.29,156.33,93.3,164.61,49.29,201.52Zm131.64,7a2,2,0,0,1-3.05,1.18l-11-7.33a2,2,0,0,1-.89-1.67V166h26.2ZM200,154H166V86h34a34,34,0,1,1,0,68Z"/></svg>
+      </div>
       <div class="produto-info">
         <h3>CRM Intelligence</h3>
         <p>Marketing e gestão de leads com inteligência artificial. Campanhas, funil de vendas e automação integrada.</p>
       </div>
     </div>
     <div class="produto-card">
-      <div class="produto-dot"></div>
+      <div class="produto-icon">
+        <svg viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path d="M212.24,83.76l-56-56A6,6,0,0,0,152,26H56A14,14,0,0,0,42,40V216a14,14,0,0,0,14,14H200a14,14,0,0,0,14-14V88A6,6,0,0,0,212.24,83.76ZM158,46.48,193.52,82H158ZM200,218H56a2,2,0,0,1-2-2V40a2,2,0,0,1,2-2h90V88a6,6,0,0,0,6,6h50V216A2,2,0,0,1,200,218Zm-34-82a6,6,0,0,1-6,6H96a6,6,0,0,1,0-12h64A6,6,0,0,1,166,136Zm0,32a6,6,0,0,1-6,6H96a6,6,0,0,1,0-12h64A6,6,0,0,1,166,168Z"/></svg>
+      </div>
       <div class="produto-info">
         <h3>Gestcon</h3>
         <p>Escritório virtual para gestão de consórcios. Simulador, auditoria de cotas e acompanhamento completo.</p>
