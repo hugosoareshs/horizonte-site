@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizonte Tech — Gestão e tecnologia na mesma mão</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #FAFAFA;
+    --white: #FFFFFF;
+    --text-900: #111111;
+    --text-700: #333333;
+    --text-500: #666666;
+    --text-400: #888888;
+    --text-300: #AAAAAA;
+    --border: #E5E5E5;
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --cyan: #06B6D4;
+    --navy: #0A1628;
+    /* Slate tones for dark sections */
+    --slate-100: #F1F5F9;
+    --slate-300: #CBD5E1;
+    --slate-400: #94A3B8;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text-900);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === NAV === */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 28px 32px;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-900);
+    white-space: nowrap;
+  }
+  .logo .tech { font-weight: 500; color: var(--text-400); }
+
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul li a {
+    color: var(--text-500);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 150ms;
+  }
+  nav ul li a:hover { color: var(--text-900); }
+
+  /* === HERO === */
+  .hero {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 100px 32px 96px;
+  }
+  .hero-inner { max-width: 680px; }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1.8px;
+    line-height: 1.08;
+    margin-bottom: 28px;
+    color: var(--text-900);
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero p {
+    font-size: 18px;
+    color: var(--text-500);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    transition: color 150ms;
+  }
+  .hero-link:hover { color: var(--blue-dark); }
+
+  /* === DIVIDER === */
+  .divider { max-width: 1040px; margin: 0 auto; padding: 0 32px; }
+  .divider-line { height: 1px; background: var(--border); }
+
+  /* === SECTIONS === */
+  section {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 80px 32px;
+  }
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-300);
+    margin-bottom: 20px;
+  }
+  section h2 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text-900);
+  }
+  section p.desc {
+    font-size: 16px;
+    color: var(--text-500);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* === DIFERENCIAL (2 colunas) === */
+  .diferencial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-top: 56px;
+  }
+  .diferencial-item h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+    color: var(--text-900);
+  }
+  .diferencial-item p {
+    font-size: 15px;
+    color: var(--text-500);
+    line-height: 1.7;
+  }
+  .diferencial-item .line {
+    width: 32px;
+    height: 2px;
+    margin-bottom: 20px;
+  }
+  .diferencial-item:nth-child(1) .line { background: var(--blue); }
+  .diferencial-item:nth-child(2) .line { background: var(--cyan); }
+
+  /* === NUMEROS === */
+  .numeros-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .numero-item { text-align: center; }
+  .numero-valor {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--text-900);
+    margin-bottom: 4px;
+  }
+  .numero-label {
+    font-size: 13px;
+    color: var(--text-400);
+    line-height: 1.4;
+  }
+
+  /* === COMO ATUAMOS === */
+  .como-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .como-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px 24px;
+  }
+  .como-card .num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-300);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .como-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.2px;
+    color: var(--text-900);
+  }
+  .como-card p {
+    font-size: 14px;
+    color: var(--text-500);
+    line-height: 1.7;
+  }
+
+  /* === PRODUTOS === */
+  .produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .produto-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: border-color 200ms, box-shadow 200ms;
+  }
+  .produto-card:hover {
+    border-color: var(--text-300);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+  .produto-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .produto-info h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--text-900);
+  }
+  .produto-info p {
+    font-size: 13px;
+    color: var(--text-400);
+    line-height: 1.5;
+  }
+
+  /* === IDEIA === */
+  .ideia-inner {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 56px 48px;
+    display: flex;
+    align-items: center;
+    gap: 48px;
+  }
+  .ideia-text { flex: 1; }
+  .ideia-text .section-label { margin-bottom: 16px; }
+  .ideia-text h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--text-900);
+  }
+  .ideia-text p {
+    font-size: 15px;
+    color: var(--text-500);
+    line-height: 1.7;
+    max-width: 420px;
+  }
+  .ideia-cta { flex-shrink: 0; }
+  .ideia-cta a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 150ms;
+  }
+  .ideia-cta a:hover { background: var(--blue-dark); }
+
+  /* === CONTATO === */
+  .contato-inner {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 56px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .contato-text h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--slate-100);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .contato-text p {
+    font-size: 14px;
+    color: var(--slate-400);
+  }
+  .contato-links {
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .contato-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    color: var(--slate-300);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color 150ms, color 150ms;
+  }
+  .contato-link:hover { border-color: rgba(255,255,255,0.35); color: var(--slate-100); }
+  .contato-link.primary {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+  .contato-link.primary:hover { background: var(--blue-dark); }
+
+  /* === FOOTER === */
+  footer {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 32px 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-300);
+    font-size: 13px;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    nav { flex-direction: column; gap: 16px; padding: 20px 24px; }
+    nav ul { gap: 20px; }
+    .hero { padding: 64px 24px 56px; }
+    .hero h1 { font-size: 32px; letter-spacing: -1.2px; }
+    .hero p { font-size: 16px; }
+    section { padding: 56px 24px; }
+    .diferencial-grid { grid-template-columns: 1fr; gap: 32px; }
+    .numeros-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .como-grid { grid-template-columns: 1fr; gap: 16px; }
+    .produtos-grid { grid-template-columns: 1fr; }
+    .ideia-inner { flex-direction: column; padding: 40px 24px; gap: 24px; text-align: center; }
+    .ideia-text p { max-width: none; }
+    .contato-inner { flex-direction: column; padding: 40px 24px; text-align: center; }
+    .contato-links { justify-content: center; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 24px 32px; }
+    section h2 { font-size: 26px; }
+    .numero-valor { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">horizonte <span class="tech">tech</span></div>
+  <ul>
+    <li><a href="#quem">Quem somos</a></li>
+    <li><a href="#como">Como atuamos</a></li>
+    <li><a href="#produtos">Produtos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Gestão e tecnologia<br>na <span class="accent">mesma mão</span>.</h1>
+    <p>Criamos produtos digitais próprios para empresas e famílias que precisam de soluções feitas por quem entende o negócio de verdade.</p>
+    <a href="#produtos" class="hero-link">
+      Conheça nossos produtos
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- QUEM SOMOS -->
+<section id="quem">
+  <div class="section-label">Quem somos</div>
+  <h2>Empresa de tecnologia com<br>25 anos de experiência em gestão.</h2>
+  <p class="desc">A Horizonte Tech desenvolve produtos digitais próprios. Cada solução nasce de vivência real com o problema — não de suposição.</p>
+
+  <div class="diferencial-grid">
+    <div class="diferencial-item">
+      <div class="line"></div>
+      <h3>Entendemos o negócio</h3>
+      <p>Mais de duas décadas operando negócios em diferentes segmentos. Da indústria ao varejo, da logística aos serviços. Sabemos onde dói antes de escrever a primeira linha de código.</p>
+    </div>
+    <div class="diferencial-item">
+      <div class="line"></div>
+      <h3>Entregamos a tecnologia</h3>
+      <p>Produtos robustos, com tecnologia própria e compromisso de longo prazo. Não vendemos horas — construímos soluções que mantemos e evoluímos.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- NUMEROS -->
+<section id="numeros">
+  <div class="numeros-grid">
+    <div class="numero-item">
+      <div class="numero-valor">25+</div>
+      <div class="numero-label">anos de experiência<br>em gestão de negócios</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">4</div>
+      <div class="numero-label">produtos próprios<br>em produção</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">100%</div>
+      <div class="numero-label">tecnologia própria<br>e mantida internamente</div>
+    </div>
+    <div class="numero-item">
+      <div class="numero-valor">Brasil</div>
+      <div class="numero-label">empresa brasileira<br>com sede própria</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- COMO ATUAMOS -->
+<section id="como">
+  <div class="section-label">Como atuamos</div>
+  <h2>Produtos que nascem de<br>quem vive o problema.</h2>
+  <p class="desc">Não somos agência, consultoria ou fábrica de software. Criamos produtos próprios para resolver problemas que conhecemos de perto.</p>
+
+  <div class="como-grid">
+    <div class="como-card">
+      <div class="num">01</div>
+      <h3>Vivência real</h3>
+      <p>Cada produto nasce de experiência direta com o desafio. Entendemos o fluxo, a dor e o contexto antes de projetar qualquer solução.</p>
+    </div>
+    <div class="como-card">
+      <div class="num">02</div>
+      <h3>Compromisso de longo prazo</h3>
+      <p>Não entregamos e saímos. Mantemos, evoluímos e operamos nossos produtos junto com quem os usa no dia a dia.</p>
+    </div>
+    <div class="como-card">
+      <div class="num">03</div>
+      <h3>Pele no jogo</h3>
+      <p>Investimos nos nossos próprios produtos. O sucesso do cliente é o nosso sucesso — estamos do mesmo lado.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- PRODUTOS -->
+<section id="produtos">
+  <div class="section-label">Produtos</div>
+  <h2>No ar agora.</h2>
+  <p class="desc">Soluções próprias, em produção, usadas todos os dias.</p>
+
+  <div class="produtos-grid">
+    <div class="produto-card">
+      <div class="produto-dot"></div>
+      <div class="produto-info">
+        <h3>FamilyFin</h3>
+        <p>Gestão financeira familiar inteligente. Controle de orçamento, metas e visão completa das finanças da família.</p>
+      </div>
+    </div>
+    <div class="produto-card">
+      <div class="produto-dot"></div>
+      <div class="produto-info">
+        <h3>Central de Monitoramento</h3>
+        <p>Monitoramento IoT para espaços comerciais. Sensores, alertas e automação de climatização em tempo real.</p>
+      </div>
+    </div>
+    <div class="produto-card">
+      <div class="produto-dot"></div>
+      <div class="produto-info">
+        <h3>CRM Intelligence</h3>
+        <p>Marketing e gestão de leads com inteligência artificial. Campanhas, funil de vendas e automação integrada.</p>
+      </div>
+    </div>
+    <div class="produto-card">
+      <div class="produto-dot"></div>
+      <div class="produto-info">
+        <h3>Gestcon</h3>
+        <p>Escritório virtual para gestão de consórcios. Simulador, auditoria de cotas e acompanhamento completo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- TEVE UMA IDEIA? -->
+<section>
+  <div class="ideia-inner">
+    <div class="ideia-text">
+      <div class="section-label">Novos produtos</div>
+      <h2>Teve uma ideia?</h2>
+      <p>Se você tem um problema real e acredita que a tecnologia pode resolvê-lo, queremos ouvir. Analisamos a viabilidade e, se fizer sentido, desenvolvemos juntos.</p>
+    </div>
+    <div class="ideia-cta">
+      <a href="#contato">
+        Envie sua proposta
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-inner">
+    <div class="contato-text">
+      <h2>Vamos conversar?</h2>
+      <p>Quer saber mais sobre nossos produtos ou explorar uma parceria?</p>
+
+    </div>
+    <div class="contato-links">
+      <a href="mailto:contato@horizonte.app" class="contato-link primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M22 6l-10 7L2 6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>Horizonte Tech LTDA</span>
+  <span>Brasil</span>
+</footer>
+
+</body>
+</html>
